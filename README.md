@@ -1,5 +1,7 @@
 # Superb Cut
 
+UNDER DEVELOPMENT!!!
+
 A clone for the usual linux "cut" command but works with multiple characters provided to the -d parameter.
 
 SCut means Superb Cut because it's superb.
@@ -13,6 +15,10 @@ TODO
 TODO
 
 # Flags
+
+```
+scut [-b list] [-c list] [-f list] [-n] [-d delim] [-s] [file]
+```
 
 ## -b
 
