@@ -61,7 +61,9 @@ I cross compiled without testing to the following operating systems and architec
 
 ## Go install
 
-TODO
+```
+go install github.com/hacker-szabo/scut@latest
+```
 
 # Building
 
