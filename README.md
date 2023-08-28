@@ -51,11 +51,79 @@ In special cases this can be used to change a sequence of characters (-d) to ano
 
 # Installation
 
+## Releases
+
+I cross compiled without testing to the following operating systems and architectures:
+
+- Windows 32/amd64/arm64
+- Linux 32/amd64/arm64
+- Macos 32/amd64/arm64
+
+## Go install
+
 TODO
 
 # Building
 
-TODO
+I used go 1.21 but it might work for way lower versions as well.
+
+1. Download the source code (or at least scut.go)
+2. Navigate to the directory in the terminal/command line
+3. `go build scut.go`
+
+## Cross compile
+
+With go installed you can cross compiled by following the basic GO cross compile way:
+
+Find your target operating system (GOOS) and architecture (GOARCH) in the following table:
+
+$GOOS | $GOARCH
+----------------
+| aix | ppc64 |
+| android | 386 |
+| android | amd64 |
+| android | arm |
+| android | arm64 |
+| darwin | amd64 |
+| darwin | arm64 |
+| dragonfly | amd64 |
+| freebsd | 386 |
+| freebsd | amd64 |
+| freebsd | arm |
+| illumos | amd64 |
+| ios | arm64 |
+| js | wasm |
+| linux | 386 |
+| linux | amd64 |
+| linux | arm |
+| linux | arm64 |
+| linux | loong64 |
+| linux | mips |
+| linux | mipsle |
+| linux | mips64 |
+| linux | mips64le |
+| linux | ppc64 |
+| linux | ppc64le |
+| linux | riscv64 |
+| linux | s390x |
+| netbsd | 386 |
+| netbsd | amd64 |
+| netbsd | arm |
+| openbsd | 386 |
+| openbsd | amd64 |
+| openbsd | arm |
+| openbsd | arm64 |
+| plan9 | 386 |
+| plan9 | amd64 |
+| plan9 | arm |
+| solaris | amd64 |
+| wasip1 | wasm |
+| windows | 386 |
+| windows | amd64 |
+| windows | arm |
+| windows | arm64 |
+
+Table copied from: https://go.dev/doc/install/source#environment
 
 # Flags
 
