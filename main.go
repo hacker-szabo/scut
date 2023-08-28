@@ -27,10 +27,10 @@ func (i *IntSlice) Set(value string) error {
 }
 
 type Arguments struct {
-	delimeter string
-	file      string
-	fragments IntSlice
-	// columnDelimeter string
+	delimeter       string
+	file            string
+	fragments       IntSlice
+	columnSeparator string
 	// skipInvalidRows bool
 }
 
@@ -39,7 +39,7 @@ func readFlags() Arguments {
 	flag.StringVar(&ret.delimeter, "d", "\t", "delimeter used for splitting each line")
 	flag.Var(&ret.fragments, "f", "Fragments to extract from each line")
 	// flag.BoolVar(&ret.skipInvalidRows, "s", false, "Skip invalid rows")
-	// flag.StringVar(&ret.columnDelimeter, "c", "\t", "delimeter used for splitting each column")
+	flag.StringVar(&ret.columnSeparator, "cs", "\t", "delimeter used for splitting each column")
 
 	flag.Parse()
 	// reading positional arguments (file)
@@ -51,10 +51,11 @@ func readFlags() Arguments {
 	return ret
 }
 
-func printLine(line string, fragments IntSlice, delimeter string,
+func printLine(line string, fragments IntSlice, delimeter string, columnSeparator string,
 
 // TODO implement this
-// skipInvalidRows bool, columnDelimeter string
+// skipInvalidRows bool
+
 ) {
 	if len(line) == 0 {
 		return
@@ -83,14 +84,14 @@ func printLine(line string, fragments IntSlice, delimeter string,
 		}
 
 		if i > 0 {
-			fmt.Print("\t")
+			fmt.Print(columnSeparator)
 		}
 		fmt.Print(splitted[f])
 	}
 	fmt.Println()
 }
 
-func readInputData(args Arguments) {
+func readAndPrintInputData(args Arguments) {
 
 	if args.file == "" {
 		stdin, err := io.ReadAll(os.Stdin)
@@ -102,7 +103,7 @@ func readInputData(args Arguments) {
 		str := string(stdin)
 		lines := strings.Split(str, "\n")
 		for _, line := range lines {
-			printLine(line, args.fragments, args.delimeter)
+			printLine(line, args.fragments, args.delimeter, args.columnSeparator)
 		}
 	} else {
 		// read lines from file
@@ -116,7 +117,7 @@ func readInputData(args Arguments) {
 
 		i := 0
 		for scanner.Scan() {
-			printLine(scanner.Text(), args.fragments, args.delimeter)
+			printLine(scanner.Text(), args.fragments, args.delimeter, args.columnSeparator)
 			i++
 		}
 
@@ -128,6 +129,6 @@ func readInputData(args Arguments) {
 
 func main() {
 	args := readFlags()
-	readInputData(args)
+	readAndPrintInputData(args)
 	// fmt.Println(args)
 }
