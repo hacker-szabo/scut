@@ -72,7 +72,7 @@ func printLine(line string, fragments IntSlice, delimiter string, columnSeparato
 	// that just want to get their job done or learn a new language
 	// which has a great reputation despite people have been
 	// complaining about this "FEATURE" for over 10 years now or since the
-	// language was created. Yes, I am talking about the ""
+	// language was created.
 	_ = splitted
 
 	for i := 0; i < len(fragments); i++ {
