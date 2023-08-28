@@ -57,7 +57,7 @@ I cross compiled without testing to the following operating systems and architec
 
 - Windows 32/amd64/arm64
 - Linux 32/amd64/arm64
-- Macos 32/amd64/arm64
+- Macos amd64/arm64
 
 ## Go install
 
