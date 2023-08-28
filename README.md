@@ -2,7 +2,7 @@
 
 UNDER DEVELOPMENT!!!
 
-A clone for the usual linux "cut" command but works with multiple characters provided to the -d parameter.
+Implements a missing feature of the "cut" common tools linux/unix command which is: **-d accepts a string not just a single character**
 
 SCut means Superb Cut because it's superb.
 
@@ -17,36 +17,39 @@ TODO
 # Flags
 
 ```
-scut [-b list] [-c list] [-f list] [-n] [-d delim] [-s] [file]
+scut [-d delimeter_string] [-f fragment 2] [-f fragment 2] [file]
 ```
-
-## -b
-
-Bytes; a list following -b specifies a range of bytes which will be returned, e.g. cut -b1-66 would return the first 66 bytes of a line. NB If used in conjunction with -n, no multi-byte characters will be split. NNB. -b will only work on input lines of less than 1023 bytes
-
-## -c
-
-Characters; a list following -c specifies a range of characters which will be returned, e.g. cut -c1-66 would return the first 66 characters of a line
-
-## -f
-
-Specifies a field list, separated by a delimiter
-list
-A comma separated or blank separated list of integer denoted fields, incrementally ordered. The - indicator may be supplied as shorthand to allow inclusion of ranges of fields e.g. 4-6 for ranges 4–6 or 5- as shorthand for field 5 to the end, etc.
-
-## -n
-
-Used in combination with -b suppresses splits of multi-byte characters
 
 ## -d
 
-Delimiter; the character immediately following the -d option is the field delimiter for use in conjunction with the -f option; the default delimiter is tab. Space and other characters with special meanings within the context of the shell in use must be enquoted or escaped as necessary.
+Delimiter string; the string provided with the -d option is the delimeter where the rows will be cut; the default delimiter is a tab character ("\t"). Space and other characters with special meanings within the context of the shell in use must be enquoted or escaped as necessary.
 
-## -s
+## -f
 
-Bypasses lines which contain no field delimiters when -f is specified, unless otherwise indicated.
-
+The fragment number (starts with 1, not 0) to print each line.
+The same as -f in the original cut command but you can add multiple of them and they will be
+printed all with a TAB character in between.
 
 ## file
 
 The file (and accompanying path if necessary) to process as input. If no file is specified then standard input will be used.
+
+## Usage
+
+### Read a file
+
+```
+scut -d ";;;" -f 1 FILENAME
+```
+
+### Pipe to STDIN
+
+```
+cat long_file.txt | scut -d ";;;" -f 1
+```
+
+### Print multiple fragments
+
+```
+scut -d ";;;" -f 1 -f 3 FILENAME
+```
