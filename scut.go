@@ -27,7 +27,7 @@ func (i *IntSlice) Set(value string) error {
 }
 
 type Arguments struct {
-	delimeter       string
+	delimiter       string
 	file            string
 	fragments       IntSlice
 	columnSeparator string
@@ -36,10 +36,10 @@ type Arguments struct {
 
 func readFlags() Arguments {
 	ret := Arguments{}
-	flag.StringVar(&ret.delimeter, "d", "\t", "delimeter used for splitting each line")
+	flag.StringVar(&ret.delimiter, "d", "\t", "delimiter used for splitting each line")
 	flag.Var(&ret.fragments, "f", "Fragments to extract from each line")
 	// flag.BoolVar(&ret.skipInvalidRows, "s", false, "Skip invalid rows")
-	flag.StringVar(&ret.columnSeparator, "cs", "\t", "delimeter used for splitting each column")
+	flag.StringVar(&ret.columnSeparator, "cs", "\t", "delimiter used for splitting each column")
 
 	flag.Parse()
 	// reading positional arguments (file)
@@ -51,7 +51,7 @@ func readFlags() Arguments {
 	return ret
 }
 
-func printLine(line string, fragments IntSlice, delimeter string, columnSeparator string,
+func printLine(line string, fragments IntSlice, delimiter string, columnSeparator string,
 
 // TODO implement this
 // skipInvalidRows bool
@@ -64,7 +64,7 @@ func printLine(line string, fragments IntSlice, delimeter string, columnSeparato
 	if len(fragments) == 0 {
 		fragments = append(fragments, 1)
 	}
-	splitted := strings.Split(line, delimeter)
+	splitted := strings.Split(line, delimiter)
 	// I am going to leave this here as a protest against
 	// the tyrant go compiler and its extremist creators that
 	// "promote" clean and readable code so much that they
@@ -103,7 +103,7 @@ func readAndPrintInputData(args Arguments) {
 		str := string(stdin)
 		lines := strings.Split(str, "\n")
 		for _, line := range lines {
-			printLine(line, args.fragments, args.delimeter, args.columnSeparator)
+			printLine(line, args.fragments, args.delimiter, args.columnSeparator)
 		}
 	} else {
 		// read lines from file
@@ -117,7 +117,7 @@ func readAndPrintInputData(args Arguments) {
 
 		i := 0
 		for scanner.Scan() {
-			printLine(scanner.Text(), args.fragments, args.delimeter, args.columnSeparator)
+			printLine(scanner.Text(), args.fragments, args.delimiter, args.columnSeparator)
 			i++
 		}
 

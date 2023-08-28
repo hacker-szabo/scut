@@ -130,12 +130,12 @@ Table copied from: https://go.dev/doc/install/source#environment
 # Flags
 
 ```
-scut -d delimeter_string -f fragment1 [-f fragment2] [-cs colum_separator] [file]
+scut -d Delimiter_string -f fragment1 [-f fragment2] [-cs colum_separator] [file]
 ```
 
 ## -d
 
-Delimiter string; the string provided with the -d option is the delimeter where the rows will be cut; the default delimiter is a tab character ("\t"). Space and other characters with special meanings within the context of the shell in use must be enquoted or escaped as necessary.
+Delimiter string; the string provided with the -d option is the Delimiter where the rows will be cut; the default delimiter is a tab character ("\t"). Space and other characters with special meanings within the context of the shell in use must be enquoted or escaped as necessary.
 
 ## -f
 
