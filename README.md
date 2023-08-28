@@ -6,6 +6,26 @@ Implements a missing feature of the "cut" common tools linux/unix command which 
 
 SCut means Superb Cut because it's superb.
 
+## Usage
+
+### Read a file
+
+```
+scut -d ";;;" -f 1 FILENAME
+```
+
+### Pipe to STDIN
+
+```
+cat long_file.txt | scut -d ";;;" -f 1
+```
+
+### Print multiple fragments
+
+```
+scut -d ";;;" -f 1 -f 3 FILENAME
+```
+
 # Installation
 
 TODO
@@ -33,23 +53,3 @@ printed all with a TAB character in between.
 ## file
 
 The file (and accompanying path if necessary) to process as input. If no file is specified then standard input will be used.
-
-## Usage
-
-### Read a file
-
-```
-scut -d ";;;" -f 1 FILENAME
-```
-
-### Pipe to STDIN
-
-```
-cat long_file.txt | scut -d ";;;" -f 1
-```
-
-### Print multiple fragments
-
-```
-scut -d ";;;" -f 1 -f 3 FILENAME
-```
